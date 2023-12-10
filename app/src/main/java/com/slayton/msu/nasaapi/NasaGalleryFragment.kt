@@ -43,6 +43,13 @@ class NasaGalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        got from chatGPT
+        val swipeRefreshLayout = binding.swipeRefreshLayout
+
+        swipeRefreshLayout.setOnRefreshListener {
+            nasaGalleryViewModel.refreshData()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 nasaGalleryViewModel.galleryItems.collect { items ->  //pass the url and photo title on navigation
@@ -51,6 +58,8 @@ class NasaGalleryFragment : Fragment() {
                             NasaGalleryFragmentDirections.showImageDetail( photoUrl, photoTitle)
                         )
                     }
+
+                    swipeRefreshLayout.isRefreshing = false
                 }
             }
         }

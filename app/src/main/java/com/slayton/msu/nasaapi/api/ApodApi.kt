@@ -5,9 +5,11 @@ import retrofit2.http.GET
 interface ApodApi {
     @GET("planetary/apod?" +
             "api_key=LtyBlzTvasC4iOjgkkP6fzd0AFUOLLt63soh9iKB" +
-            "&count=75" +
-            "&thumbs=false")
-
+            "&count=75")
+/*the thumbs param, when set to false is prevents
+the url of a video from being returned, i thought
+that this meant that videos would be ignored, but
+videos still popped up but had a blank square. */
     suspend fun fetchPhotos(): List<GalleryItem>
 
 //    maps direcly to the GalleryItem class because, with how

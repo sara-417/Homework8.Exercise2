@@ -27,4 +27,15 @@ class NasaGalleryViewModel : ViewModel() {
             }
         }
     }
+//got from chatGPT
+    fun refreshData() {
+        viewModelScope.launch {
+            try {
+                val items = photoRepository.fetchPhotos()
+                _galleryItems.value = items
+            } catch (ex: Exception) {
+                Log.e(TAG, "Failed to fetch gallery items", ex)
+            }
+        }
+    }
 }
