@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.slayton.msu.nasaapi.api.ApodApi
 import com.slayton.msu.nasaapi.databinding.FragmentNasaGalleryBinding
@@ -46,7 +47,11 @@ class NasaGalleryFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 nasaGalleryViewModel.galleryItems.collect { items ->
                     Log.d(TAG, "Response received: $items")
-                    binding.photoGrid.adapter = PhotoListAdapter(items)
+                    binding.photoGrid.adapter = PhotoListAdapter(items) {
+                        findNavController().navigate (
+                            NasaGalleryFragmentDirections.showImageDetail()
+                        )
+                    }
                 }
             }
 

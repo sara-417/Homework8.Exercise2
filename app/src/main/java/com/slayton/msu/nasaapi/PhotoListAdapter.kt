@@ -12,24 +12,18 @@ class PhotoViewHolder(
     private val binding: ListItemGalleryBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 //    , onImageClicked: (photoTitle: String) -> Unit
-    fun bind(galleryItem: GalleryItem) {
+    fun bind(galleryItem: GalleryItem, onImageClicked: () -> Unit) {
         binding.itemImageView.load(galleryItem.url)
 
         binding.root.setOnClickListener{
-            binding.root.setOnClickListener {
-                Toast.makeText(
-                    binding.root.context,
-                    "${galleryItem.title} clicked!",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            onImageClicked()
         }
     }
 }
 
 class PhotoListAdapter(
     private val galleryItems: List<GalleryItem>,
-//    private val onImageClicked: (photoTitle: String) -> Unit
+    private val onImageClicked: () -> Unit
 ) : RecyclerView.Adapter<PhotoViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -42,7 +36,7 @@ class PhotoListAdapter(
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val item = galleryItems[position]
 //        , onImageClicked
-        holder.bind(item)
+        holder.bind(item, onImageClicked)
     }
     override fun getItemCount() = galleryItems.size
 }

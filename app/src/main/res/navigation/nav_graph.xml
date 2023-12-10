@@ -9,5 +9,14 @@
         android:id="@+id/nasaGalleryFragment"
         android:name="com.slayton.msu.nasaapi.NasaGalleryFragment"
         android:label="NasaGalleryFragment"
-        tools:layout="@layout/fragment_nasa_gallery"/>
+        tools:layout="@layout/fragment_nasa_gallery">
+        <action
+            android:id="@+id/show_image_detail"
+            app:destination="@id/singlePhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singlePhotoFragment"
+        android:name="com.slayton.msu.nasaapi.SinglePhotoFragment"
+        android:label="SinglePhotoFragment"
+        tools:layout="@layout/fragment_single_photo"/>
 </navigation>
