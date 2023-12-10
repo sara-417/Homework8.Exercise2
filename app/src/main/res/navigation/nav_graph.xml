@@ -18,5 +18,12 @@
         android:id="@+id/singlePhotoFragment"
         android:name="com.slayton.msu.nasaapi.SinglePhotoFragment"
         android:label="SinglePhotoFragment"
-        tools:layout="@layout/fragment_single_photo"/>
+        tools:layout="@layout/fragment_single_photo">
+        <argument
+            android:name="photoUrl"
+            app:argType="string" />
+        <argument
+            android:name="photoTitle"
+            app:argType="string" />
+    </fragment>
 </navigation>

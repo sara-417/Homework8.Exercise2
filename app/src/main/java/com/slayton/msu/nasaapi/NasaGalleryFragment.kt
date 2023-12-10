@@ -47,9 +47,9 @@ class NasaGalleryFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 nasaGalleryViewModel.galleryItems.collect { items ->
                     Log.d(TAG, "Response received: $items")
-                    binding.photoGrid.adapter = PhotoListAdapter(items) {
+                    binding.photoGrid.adapter = PhotoListAdapter(items) { photoUrl, photoTitle ->
                         findNavController().navigate (
-                            NasaGalleryFragmentDirections.showImageDetail()
+                            NasaGalleryFragmentDirections.showImageDetail( photoUrl, photoTitle)
                         )
                     }
                 }
