@@ -2,7 +2,6 @@ package com.slayton.msu.nasaapi
 
 import com.slayton.msu.nasaapi.api.ApodApi
 import com.slayton.msu.nasaapi.api.GalleryItem
-import com.slayton.msu.nasaapi.api.PhotoResponse
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
