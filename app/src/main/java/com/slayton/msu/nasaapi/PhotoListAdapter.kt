@@ -41,7 +41,6 @@ class PhotoListAdapter(
     }
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val item = galleryItems[position]
-//        , onImageClicked
         holder.bind(item, onImageClicked)
     }
     override fun getItemCount() = galleryItems.size

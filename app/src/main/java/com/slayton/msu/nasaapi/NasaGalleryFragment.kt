@@ -45,8 +45,7 @@ class NasaGalleryFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                nasaGalleryViewModel.galleryItems.collect { items ->
-                    Log.d(TAG, "Response received: $items")
+                nasaGalleryViewModel.galleryItems.collect { items ->  //pass the url and photo title on navigation
                     binding.photoGrid.adapter = PhotoListAdapter(items) { photoUrl, photoTitle ->
                         findNavController().navigate (
                             NasaGalleryFragmentDirections.showImageDetail( photoUrl, photoTitle)
@@ -54,10 +53,7 @@ class NasaGalleryFragment : Fragment() {
                     }
                 }
             }
-
-
         }
-
     }
 
     override fun onDestroyView() {

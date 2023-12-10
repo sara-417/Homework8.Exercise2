@@ -19,13 +19,16 @@ class SinglePhotoFragment : Fragment() {
             "Cannot access binding because it is null. Is the view visible?"
         }
 
+//    grab the arguments passed on navigation
     private val args: SinglePhotoFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        use those arguments to set the properties of the fragments' views
+//        issue i encountered: i tried to do this in the adapter at first for
+//        some reason and that obviously didnt work
         binding.imageDisplay.load(args.photoUrl)
         binding.imageTitle.text = args.photoTitle
-        Log.d("test", "Image title: ${args.photoTitle} and Image url:  ${args.photoUrl}")
     }
 
     override fun onCreateView(
@@ -37,8 +40,6 @@ class SinglePhotoFragment : Fragment() {
             FragmentSinglePhotoBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+// i pretty much just modeled this after what we did in the Flickr App.
 private const val TAG = "NasaGalleryViewModel"
 class NasaGalleryViewModel : ViewModel() {
     private val photoRepository = NasaRepository()
@@ -20,7 +21,6 @@ class NasaGalleryViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val items = photoRepository.fetchPhotos()
-                Log.d(TAG, "Items received: $items")
                 _galleryItems.value = items
             } catch (ex: Exception) {
                 Log.e(TAG, "Failed to fetch gallery items", ex)
