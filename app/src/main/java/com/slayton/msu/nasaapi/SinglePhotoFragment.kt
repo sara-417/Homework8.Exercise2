@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import coil.load
 import com.slayton.msu.nasaapi.databinding.FragmentNasaGalleryBinding
 import com.slayton.msu.nasaapi.databinding.FragmentSinglePhotoBinding
 
@@ -22,7 +23,8 @@ class SinglePhotoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.imageDisplay.load(args.photoUrl)
+        binding.imageTitle.text = args.photoTitle
         Log.d("test", "Image title: ${args.photoTitle} and Image url:  ${args.photoUrl}")
     }
 

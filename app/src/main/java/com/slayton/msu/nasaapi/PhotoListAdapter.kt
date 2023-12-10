@@ -11,7 +11,7 @@ import com.slayton.msu.nasaapi.databinding.ListItemGalleryBinding
 class PhotoViewHolder(
     private val binding: ListItemGalleryBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-//    , onImageClicked: (photoTitle: String) -> Unit
+
     fun bind(galleryItem: GalleryItem, onImageClicked: (
             photoUrl: String,
             photoTitle: String
